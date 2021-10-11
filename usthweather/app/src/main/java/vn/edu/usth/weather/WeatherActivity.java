@@ -13,8 +13,6 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
-        getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(R.id.container, ForecastFragment.class, null).commit();
         Log.i(TAG, "onCreate");
     }
 
