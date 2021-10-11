@@ -12,5 +12,5 @@ Student Info
 
 * Name: *Vũ Đức Chính*
 * ID: *BI10-024*
-* Group ID: *2*
+* Group ID: *15*
 

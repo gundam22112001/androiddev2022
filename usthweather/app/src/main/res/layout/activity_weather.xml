@@ -6,4 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".WeatherActivity"/>
+    tools:context=".WeatherActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp"></LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
