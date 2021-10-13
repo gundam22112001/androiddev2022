@@ -4,10 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    private String titles[] = new String[] { "Weather", "Forecast", "WeatherAndForecast" };
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
@@ -37,6 +38,20 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle (int position){
-        return titles[position];
+        String title="";
+        switch (position) {
+            case 0:
+                 title="Weather";
+                 break;
+
+            case 1:
+                title="Forecast";
+                break;
+
+            case 2:
+                title="WeatherAndForecast";
+                break;
+        }
+        return title;
     }
 }
