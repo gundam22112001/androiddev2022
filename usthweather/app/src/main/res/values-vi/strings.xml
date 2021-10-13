@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USTH Weather</string>
+    <string name="mon">Thứ 2</string>
+    <string name="tue">Thứ 3</string>
+    <string name="wed">Thứ 4</string>
+    <string name="thu">Thứ 5</string>
+    <string name="fri">Thứ 6</string>
+    <string name="sat">Thứ 7</string>
+    <string name="sun">Chủ Nhật</string>
+    <string name="cloudy1">Nhiều mây\n22–29C</string>
+    <string name="city">Paris</string>
+    <string name="weather_forecast">12C\nNhiều mây</string>
+    <string name="cloudy2">Nhiều mây\n22–30C</string>
+    <string name="cloudy3">Nhiều mây\n23–31C</string>
+    <string name="shower1">Mưa rào\n24–30C</string>
+    <string name="shower2">Mưa rào\n24–26C</string>
+    <string name="rain">Mưa\n22–23C</string>
+    <string name="thunderstorms">Sấm sét\n25–28C</string>
+    <string name="sct_thunderstorms1">Mưa dông rải rác\n24–27C</string>
+    <string name="sct_thunderstorms2">Mưa dông rải rác\n23–27C</string>
+    <string name="sct_showers">Mưa rào rải rác\n22–27C</string>
+</resources>
