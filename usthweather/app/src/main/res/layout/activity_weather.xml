@@ -17,6 +17,15 @@
         android:layout_height="wrap_content"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_margin="5dp"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

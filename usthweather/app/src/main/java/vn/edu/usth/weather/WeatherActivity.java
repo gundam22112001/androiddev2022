@@ -2,20 +2,16 @@ package vn.edu.usth.weather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -25,6 +21,7 @@ public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
     private TabLayout tab;
     private ViewPager pager;
+    private ProgressBar progressBar;
 //    Toolbar toolbar;
 
     @Override
@@ -42,6 +39,7 @@ public class WeatherActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(3);
         tab.setupWithViewPager(pager);
+        progressBar = findViewById(R.id.progress_bar);
         Log.i(TAG, "onCreate");
     }
 
@@ -56,22 +54,23 @@ public class WeatherActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_refresh:
 //                Toast.makeText(this, "Refreshing", Toast.LENGTH_SHORT).show();
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        Bundle bundle = new Bundle();
-                        bundle.putString("server_response", "Refreshing");
-                        Message msg = handler.obtainMessage();
-                        msg.setData(bundle);
-                        handler.sendMessage(msg);
-                    }
-                });
-                t.start();
+//                Thread t = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(3000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("server_response", "Refreshing");
+//                        Message msg = handler.obtainMessage();
+//                        msg.setData(bundle);
+//                        handler.sendMessage(msg);
+//                    }
+//                });
+//                t.start();
+                refreshAsyncTask(progressBar);
                 return true;
             case R.id.action_setting:
                 openPreActivity();
@@ -81,13 +80,55 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
-    final Handler handler = new Handler(Looper.getMainLooper()) {
+//    final Handler handler = new Handler(Looper.getMainLooper()) {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            String content = msg.getData().getString("server_response");
+//            Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+//        }
+//    };
+
+
+    public void refreshAsyncTask(View v) {
+        AsyncTask task = new AsyncTask();
+        task.execute(5);
+    }
+
+    private class AsyncTask extends android.os.AsyncTask<Integer,Integer, String> {
+
         @Override
-        public void handleMessage(@NonNull Message msg) {
-            String content = msg.getData().getString("server_response");
-            Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressBar.setVisibility(View.VISIBLE);
         }
-    };
+        @Override
+        protected String doInBackground(Integer... integers) {
+            for (int i = 0; i < integers[0]; i++){
+                publishProgress((i * 100)/integers[0]);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return "Finish Refreshing!";
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+
+            progressBar.setProgress(values[0]);
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            Toast.makeText(WeatherActivity.this, s, Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
 
     @Override
     protected void onStart() {
