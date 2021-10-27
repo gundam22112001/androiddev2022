@@ -7,8 +7,12 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,9 +53,25 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_refresh:
-                Toast.makeText(this, "Refreshing", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Refreshing", Toast.LENGTH_SHORT).show();
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Bundle bundle = new Bundle();
+                        bundle.putString("server_response", "Refreshing");
+                        Message msg = handler.obtainMessage();
+                        msg.setData(bundle);
+                        handler.sendMessage(msg);
+                    }
+                });
+                t.start();
                 return true;
             case R.id.action_setting:
                 openPreActivity();
@@ -60,6 +80,14 @@ public class WeatherActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String content = msg.getData().getString("server_response");
+            Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void onStart() {
