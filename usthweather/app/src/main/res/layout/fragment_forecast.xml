@@ -13,6 +13,7 @@
     tools:context=".ForecastFragment">
 
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -42,6 +43,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -71,6 +73,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -100,6 +103,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear4"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -129,6 +133,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear5"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -158,6 +163,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear6"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -187,6 +193,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear7"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -216,6 +223,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear8"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -245,6 +253,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear9"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
@@ -274,6 +283,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear10"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
         android:orientation="horizontal">
